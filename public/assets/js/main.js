@@ -116,4 +116,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
   counters.forEach(counter => counterObserver.observe(counter));
 
+  // ===== LIGHTBOX GALERI =====
+  const lightboxModal = document.getElementById('lightboxModal');
+  const lightboxImage = document.getElementById('lightboxImage');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxTriggers = document.querySelectorAll('.galeri-lightbox-trigger');
+
+  if (lightboxModal && lightboxImage && lightboxClose) {
+    lightboxTriggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const imageUrl = trigger.getAttribute('data-image');
+        const title = trigger.getAttribute('data-title');
+
+        lightboxImage.src = imageUrl;
+        lightboxCaption.textContent = title || '';
+        lightboxModal.classList.add('active');
+        lightboxModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // prevent scrolling behind
+      });
+    });
+
+    const closeLightbox = () => {
+      lightboxModal.classList.remove('active');
+      lightboxModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = ''; // restore scrolling
+      setTimeout(() => {
+        lightboxImage.src = '';
+        lightboxCaption.textContent = '';
+      }, 300);
+    };
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    // Close when clicking background outside the image
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) {
+        closeLightbox();
+      }
+    });
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  }
+
 });

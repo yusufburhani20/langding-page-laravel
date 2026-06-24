@@ -210,12 +210,12 @@
     <div class="galeri-grid">
       @if($galeri->isNotEmpty())
         @foreach($galeri as $i => $foto)
-        <a href="{{ $foto->instagram_url }}" class="galeri-item {{ $i === 0 ? 'tall' : '' }} animate-on-scroll" target="_blank" rel="noopener">
+        <a href="javascript:void(0)" class="galeri-item {{ $i === 0 ? 'tall' : '' }} animate-on-scroll galeri-lightbox-trigger" data-image="{{ $foto->foto_url }}" data-title="{{ $foto->judul ?? 'Galeri TJKT' }}">
           <img src="{{ $foto->foto_url }}" alt="{{ $foto->judul ?? 'Galeri TJKT' }}" style="width:100%; height:100%; object-fit:cover;" />
           <div class="galeri-overlay">
             <div class="galeri-overlay-content">
-              <i class="fab fa-instagram"></i>
-              <span>Lihat di Instagram</span>
+              <i class="fas fa-search-plus"></i>
+              <span>Lihat Foto</span>
             </div>
           </div>
         </a>

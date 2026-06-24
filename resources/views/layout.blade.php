@@ -59,7 +59,9 @@
     <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
     <li><a href="{{ request()->routeIs('home') ? '#profil' : route('home') . '#profil' }}">Profil</a></li>
     <li><a href="{{ request()->routeIs('home') ? '#kurikulum' : route('home') . '#kurikulum' }}">Kurikulum</a></li>
+    <li><a href="{{ request()->routeIs('home') ? '#eservice' : route('home') . '#eservice' }}">E-Service</a></li>
     <li><a href="{{ request()->routeIs('home') ? '#galeri' : route('home') . '#galeri' }}">Galeri</a></li>
+    <li><a href="{{ request()->routeIs('home') ? '#keunggulan' : route('home') . '#keunggulan' }}">Keunggulan</a></li>
     <li><a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.*') ? 'active' : '' }}">Berita</a></li>
     <li><a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}">Kontak</a></li>
     <li><a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}" class="nav-cta-btn">Daftar Sekarang</a></li>
@@ -74,7 +76,9 @@
   <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
   <a href="{{ request()->routeIs('home') ? '#profil' : route('home') . '#profil' }}">Profil</a>
   <a href="{{ request()->routeIs('home') ? '#kurikulum' : route('home') . '#kurikulum' }}">Kurikulum</a>
+  <a href="{{ request()->routeIs('home') ? '#eservice' : route('home') . '#eservice' }}">E-Service</a>
   <a href="{{ request()->routeIs('home') ? '#galeri' : route('home') . '#galeri' }}">Galeri</a>
+  <a href="{{ request()->routeIs('home') ? '#keunggulan' : route('home') . '#keunggulan' }}">Keunggulan</a>
   <a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.*') ? 'active' : '' }}">Berita</a>
   <a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}">Kontak</a>
   <a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}" style="margin-top: 12px; text-align: center; background: var(--accent2); color: white; padding: 10px; border-radius: 6px; font-weight: 700; text-decoration: none; font-family: 'Space Grotesk', sans-serif;">Daftar Sekarang</a>
@@ -120,6 +124,7 @@
           <a href="{{ route('home') }}#kurikulum">Kurikulum</a>
           <a href="{{ route('home') }}#eservice">E-Service</a>
           <a href="{{ route('home') }}#galeri">Galeri</a>
+          <a href="{{ route('home') }}#keunggulan">Keunggulan</a>
           <a href="{{ route('blog.index') }}">Berita</a>
           <a href="{{ route('home') }}#kontak">Kontak</a>
         </div>
@@ -172,6 +177,15 @@
   </div>
 </footer>
 
+
+<!-- ===== LIGHTBOX MODAL ===== -->
+<div id="lightboxModal" class="lightbox-modal" aria-hidden="true" role="dialog">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Tutup Galeri">&times;</button>
+  <div class="lightbox-content">
+    <img id="lightboxImage" src="" alt="Gallery Preview">
+    <div id="lightboxCaption" class="lightbox-caption"></div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
