@@ -1,58 +1,107 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Website Landing Page & Admin Panel - TJKT SMK Fadris
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Website resmi Program Keahlian **Teknik Jaringan Komputer dan Telekomunikasi (TJKT) SMK Fadris**. Proyek ini dikembangkan menggunakan framework Laravel dengan desain modern premium (kombinasi tema terang pada konten dan gradasi biru pada hero/header) serta dilengkapi dengan fitur portal berita (blog) dan panel administrasi (admin dashboard) yang lengkap.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 1. Landing Page Publik
+* **Hero Banner Premium**: Latar belakang animasi video interaktif, teks dengan tipografi *Space Grotesk*, animasi SVG grafis jaringan yang berputar, dan panel statistik dinamis.
+* **Kurikulum & Modul**: Menampilkan program studi secara dinamis per kelas (X, XI, XII) lengkap dengan tombol unduh modul dan roadmap belajar.
+* **Portal E-Service**: Akses cepat satu pintu menuju berbagai aplikasi internal sekolah (SIAKAD, E-Learning, Portal Orang Tua, BKK, PPDB).
+* **Galeri Foto Asimetris**: Dokumentasi kegiatan jurusan dengan tata letak grid Instagram (asimetris modern).
+* **Mutu Lulusan (Keunggulan)**: Pencapaian lulusan disertai diagram progress bar tingkat penyerapan kerja dan kesiapan industri.
+* **Kontak & Google Maps**: Detail kontak terintegrasi tombol aksi cepat WhatsApp/Website, beserta peta lokasi interaktif.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 2. Portal Berita & Artikel (`/blog`)
+* **Halaman Berita**: Artikel yang terorganisir rapi dengan filter kategori dinamis, pagination, dan widget sidebar (kategori dan artikel terbaru).
+* **Detail Artikel**: Halaman baca artikel premium dengan dukungan galeri foto di dalam postingan dan tombol bagikan cepat ke WhatsApp / Facebook.
+* **Responsif**: Dioptimalkan sepenuhnya agar tampil sempurna di perangkat mobile maupun desktop.
 
-## Learning Laravel
+### 3. Panel Admin Dashboard (`/admin`)
+* **Autentikasi Aman**: Login khusus dengan role control (Admin, Editor, Author).
+* **Manajemen Konten**: Kelola data Kurikulum, Layanan E-Service, Galeri, Keunggulan, dan Kontak secara dinamis.
+* **Manajemen Berita**: CRUD artikel blog lengkap dengan editor teks (WYSIWYG), upload galeri foto pendukung, pengaturan featured image, status draft/publish, dan pengelolaan kategori.
+* **Role Restrict**: Penulis (*Author*) hanya dapat mengedit dan mengelola artikel milik mereka sendiri, sementara Administrator memiliki kontrol penuh.
+* **Pengaturan Umum & Kustomisasi Tema**: Ubah nama situs, logo, warna primer/sekunder tema, kelengkungan sudut (*border-radius*), dan upload **Favicon Website** langsung dari dashboard.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠️ Spesifikasi Teknologi
+* **Framework**: Laravel 11/12/13
+* **Bahasa**: PHP >= 8.2 (Kompatibel penuh dengan PHP 8.4)
+* **Database**: MySQL / MariaDB
+* **Frontend**: HTML5, Blade Templates, Vanilla CSS, FontAwesome 6, Swiper.js, Google Fonts (Space Grotesk & Inter)
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## 📥 Panduan Instalasi (Lokal / Development)
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Ikuti langkah-langkah di bawah ini untuk menjalankan aplikasi di lingkungan lokal Anda:
 
+### 1. Clone Repositori
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/yusufburhani20/langding-page-laravel.git
+cd langding-page-laravel
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Instalasi Dependensi PHP
+```bash
+composer install
+```
 
-## Contributing
+### 3. Konfigurasi Environment (`.env`)
+Salin file `.env.example` menjadi `.env`:
+```bash
+copy .env.example .env
+```
+Buka file `.env` dan konfigurasikan koneksi database Anda (sesuaikan dengan nama DB lokal Anda):
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=landing
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Generate Application Key
+```bash
+php artisan key:generate
+```
 
-## Code of Conduct
+### 5. Hubungkan Folder Penyimpanan (Storage Link)
+Buat symlink agar file gambar yang diunggah di admin panel dapat diakses secara publik:
+```bash
+php artisan storage:link
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 6. Impor Database (`tkj.sql`)
+Impor file database yang sudah dikonfigurasi (`tkj.sql` di root direktori project) ke server database lokal Anda:
+* **Menggunakan CLI (MySQL/MariaDB)**:
+  ```bash
+  mysql -u root -p landing < tkj.sql
+  ```
+* **Atau melalui phpMyAdmin**: Buat database baru bernama `landing`, klik tab **Import**, pilih file `tkj.sql`, lalu klik **Import/Go**.
 
-## Security Vulnerabilities
+*Note: Jika ingin memulai dengan database kosongan baru dan membuat data contoh awal, jalankan perintah:*
+```bash
+php artisan migrate
+php artisan db:seed --class=DatabaseSeeder
+php artisan db:seed --class=BlogSeeder
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 7. Jalankan Server Lokal
+```bash
+php artisan serve
+```
+Aplikasi kini dapat diakses di browser melalui alamat: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🔐 Akun Login Dashboard Admin Default
+* **Halaman Login**: [http://127.0.0.1:8000/admin/login](http://127.0.0.1:8000/admin/login)
+* **Username**: `admin`
+* **Password**: `admin123`
+*(Sangat disarankan untuk memperbarui password admin di menu Pengguna setelah login pertama).*

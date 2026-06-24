@@ -10,7 +10,7 @@ class Kurikulum extends Model
     protected $table = 'kurikulum';
     public $timestamps = false;
 
-    protected $fillable = ['nama_mapel', 'modul_url', 'roadmap_url', 'urutan', 'aktif'];
+    protected $fillable = ['nama_mapel', 'deskripsi', 'kelas', 'modul_url', 'roadmap_url', 'urutan', 'aktif'];
 
     protected $casts = ['aktif' => 'boolean'];
 

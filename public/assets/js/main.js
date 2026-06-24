@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
       link.style.color = '';
       link.style.background = '';
       if (link.getAttribute('href') === `#${current}`) {
-        link.style.color = 'var(--primary)';
-        link.style.background = 'rgba(14, 165, 233, 0.1)';
+        link.style.color = 'var(--accent2)';
+        link.style.background = 'rgba(255, 107, 43, 0.12)';
       }
     });
   }, { passive: true });

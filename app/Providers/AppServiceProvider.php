@@ -25,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('site_settings', $settings);
                 $view->with('site_name', $settings['site_name'] ?? 'TJKT SMK Fadris');
                 $view->with('site_logo', $settings['site_logo'] ?? null);
+                $view->with('site_favicon', $settings['site_favicon'] ?? null);
+                $view->with('site_kontak', \App\Models\Kontak::first());
             } catch (\Exception $e) {
                 // Ignore if table doesn't exist yet
             }

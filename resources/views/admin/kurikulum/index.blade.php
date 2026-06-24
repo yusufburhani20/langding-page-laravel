@@ -18,6 +18,8 @@
         <tr>
           <th width="80">Urutan</th>
           <th>Nama Mata Pelajaran</th>
+          <th>Deskripsi</th>
+          <th width="90">Kelas</th>
           <th>Modul / Roadmap</th>
           <th width="100">Status</th>
           <th width="150">Aksi</th>
@@ -28,6 +30,16 @@
         <tr>
           <td style="text-align:center">{{ $row->urutan }}</td>
           <td><strong>{{ $row->nama_mapel }}</strong></td>
+          <td style="font-size:0.82rem; color:#666; max-width:220px;">
+            {{ $row->deskripsi ? Str::limit($row->deskripsi, 80) : '-' }}
+          </td>
+          <td style="text-align:center">
+            @if($row->kelas)
+              <span class="badge badge-success">Kelas {{ $row->kelas }}</span>
+            @else
+              <span style="color:#aaa">-</span>
+            @endif
+          </td>
           <td>
             <div style="font-size:0.8rem">
               <div><i class="fas fa-link"></i> <a href="{{ $row->modul_url }}" target="_blank" title="{{ $row->modul_url }}" style="color:var(--primary);text-decoration:none">Modul</a></div>
@@ -58,7 +70,7 @@
         </tr>
         @empty
         <tr>
-          <td colspan="5" style="text-align:center; padding:2rem">Belum ada data mata pelajaran.</td>
+          <td colspan="7" style="text-align:center; padding:2rem">Belum ada data mata pelajaran.</td>
         </tr>
         @endforelse
       </tbody>
@@ -81,6 +93,21 @@
         <div class="form-group">
           <label class="form-label" for="nama_mapel">Nama Mata Pelajaran</label>
           <input type="text" id="nama_mapel" name="nama_mapel" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="deskripsi">Deskripsi</label>
+          <textarea id="deskripsi" name="deskripsi" class="form-input" rows="3" style="resize:vertical;" placeholder="Deskripsi singkat mata pelajaran (opsional)"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="kelas">Kelas</label>
+          <select id="kelas" name="kelas" class="form-input">
+            <option value="">-- Pilih Kelas --</option>
+            <option value="X">Kelas X</option>
+            <option value="XI">Kelas XI</option>
+            <option value="XII">Kelas XII</option>
+          </select>
         </div>
         
         <div class="form-group">
@@ -125,6 +152,8 @@ function openFormModal() {
     document.getElementById('form-method').value = 'POST';
     
     document.getElementById('nama_mapel').value = '';
+    document.getElementById('deskripsi').value = '';
+    document.getElementById('kelas').value = '';
     document.getElementById('modul_url').value = '#';
     document.getElementById('roadmap_url').value = '#';
     document.getElementById('urutan').value = '0';
@@ -139,6 +168,8 @@ function editData(data) {
     document.getElementById('form-method').value = 'PUT';
     
     document.getElementById('nama_mapel').value = data.nama_mapel;
+    document.getElementById('deskripsi').value = data.deskripsi ?? '';
+    document.getElementById('kelas').value = data.kelas ?? '';
     document.getElementById('modul_url').value = data.modul_url;
     document.getElementById('roadmap_url').value = data.roadmap_url;
     document.getElementById('urutan').value = data.urutan;

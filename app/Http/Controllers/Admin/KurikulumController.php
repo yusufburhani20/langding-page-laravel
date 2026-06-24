@@ -18,6 +18,8 @@ class KurikulumController extends Controller
     {
         $validated = $request->validate([
             'nama_mapel'  => 'required|string|max:200',
+            'deskripsi'   => 'nullable|string|max:1000',
+            'kelas'       => 'nullable|string|max:50',
             'modul_url'   => 'nullable|string|max:500',
             'roadmap_url' => 'nullable|string|max:500',
             'urutan'      => 'nullable|integer',
@@ -37,6 +39,8 @@ class KurikulumController extends Controller
     {
         $validated = $request->validate([
             'nama_mapel'  => 'required|string|max:200',
+            'deskripsi'   => 'nullable|string|max:1000',
+            'kelas'       => 'nullable|string|max:50',
             'modul_url'   => 'nullable|string|max:500',
             'roadmap_url' => 'nullable|string|max:500',
             'urutan'      => 'nullable|integer',

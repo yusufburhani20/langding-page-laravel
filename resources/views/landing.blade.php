@@ -5,66 +5,101 @@
 @section('content')
 <!-- ===== HERO SECTION ===== -->
 <section id="hero" aria-label="Hero Section">
+  <video autoplay loop muted playsinline class="hero-video-bg">
+    <source src="{{ asset('storage/global_network_background_animation.mp4') }}" type="video/mp4">
+  </video>
   <div class="hero-bg-circles" aria-hidden="true">
     <div class="hero-circle"></div>
     <div class="hero-circle"></div>
     <div class="hero-circle"></div>
   </div>
-  <div class="hero-content">
-    <div class="hero-badge">
-      <i class="fas fa-graduation-cap"></i>
-      Jurusan Teknologi Unggulan 2025
-    </div>
-    <h1 class="hero-title">
-      🎓 {!! nl2br(e($hero_title)) !!}
-    </h1>
-    <p class="hero-subtitle">
-      📢 {{ $hero_subtitle }}
-    </p>
-    <div class="hero-actions">
-      <a href="#kurikulum" class="btn btn-primary" id="btn-daftar">
-        <i class="fas fa-rocket"></i> Lihat Kurikulum
-      </a>
-      <a href="#profil" class="btn btn-outline" id="btn-pelajari">
-        <i class="fas fa-info-circle"></i> Pelajari Lebih Lanjut
-      </a>
+  
+  <div class="hero-inner animate-on-scroll">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <span>Jurusan Teknologi Unggulan 2025</span>
+      </div>
+      @php
+        $title_parts = explode("\n", $hero_title);
+      @endphp
+      <h1 class="hero-title display">
+        {{ $title_parts[0] ?? '' }}
+        @if(isset($title_parts[1]))
+          <br><span class="accent-line">{{ $title_parts[1] }}</span>
+        @endif
+      </h1>
+      <p class="hero-desc">
+        {{ $hero_subtitle }}
+      </p>
+      <div class="hero-actions">
+        <a href="#kurikulum" class="btn-primary" id="btn-daftar">
+          Lihat Kurikulum
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="#profil" class="btn-outline" id="btn-pelajari">Pelajari Lebih Lanjut</a>
+      </div>
+      
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">10<span>+</span></div>
+          <div class="stat-label">Mata Pelajaran Unggulan</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">Lulusan Siap Kerja</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5<span>+</span></div>
+          <div class="stat-label">Mitra Industri</div>
+        </div>
+      </div>
     </div>
   </div>
+
   <div class="scroll-indicator" aria-hidden="true">
     <i class="fas fa-chevron-down"></i>
   </div>
 </section>
 
-<div class="section-divider"></div>
-
-<!-- ===== PROFIL SECTION ===== -->
-<section id="profil" aria-labelledby="profil-heading">
-  <div class="container">
-    <div class="section-header animate-on-scroll">
-      <div class="section-label"><i class="fas fa-school"></i> Tentang Kami</div>
-      <h2 class="section-title" id="profil-heading">👨🏫 Profil TJKT SMK Fadris</h2>
-    </div>
-
-    <div class="profil-card animate-on-scroll">
-      <div class="profil-icon-wrap" aria-hidden="true">🏫</div>
-      <div class="profil-text">
-        <h3>Jurusan Teknik Jaringan Komputer dan Telekomunikasi</h3>
-        <p>{!! nl2br(e($profil_text)) !!}</p>
+<!-- ===== TENTANG JURUSAN ===== -->
+<section id="profil" class="about">
+  <div class="container about-inner animate-on-scroll">
+    <div>
+      <p class="section-eyebrow">Tentang Jurusan</p>
+      <h2 class="section-title display">Siap Terjun ke Industri Teknologi</h2>
+      <p class="section-sub">{!! nl2br(e($profil_text)) !!}</p>
+      <div class="badge-row" style="margin-top:28px">
+        <span class="badge">Cisco Networking</span>
+        <span class="badge">Linux Server</span>
+        <span class="badge">Cloud Computing</span>
+        <span class="badge">Cybersecurity</span>
+        <span class="badge">Fiber Optik</span>
+        <span class="badge">IoT</span>
       </div>
     </div>
-
-    <div class="profil-stats">
-      <div class="stat-card animate-on-scroll">
-        <div class="stat-number">10+</div>
-        <div class="stat-label">Mata Pelajaran Unggulan</div>
+    <div class="about-visual animate-on-scroll">
+      <div class="about-card">
+        <div class="about-card-header">
+          <div class="about-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <h3>Laboratorium Modern</h3>
+          </div>
+        </div>
+        <p>Fasilitas lab jaringan lengkap dengan perangkat Cisco, MikroTik, dan server dedicated untuk praktik langsung siswa setiap hari.</p>
+        <div style="margin-top:20px;height:4px;background:#F4F7FC;border-radius:2px;overflow:hidden">
+          <div style="height:100%;width:85%;background:linear-gradient(90deg,#00C8FF,#0F2447);border-radius:2px"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:6px">
+          <span style="font-size:12px;color:var(--text-secondary)">Utilisasi Lab</span>
+          <span style="font-size:12px;font-weight:600;color:var(--primary)">85%</span>
+        </div>
       </div>
-      <div class="stat-card animate-on-scroll">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Lulusan Siap Kerja</div>
-      </div>
-      <div class="stat-card animate-on-scroll">
-        <div class="stat-number">5+</div>
-        <div class="stat-label">Mitra Industri</div>
+      <div class="floating-stat">
+        <div class="num">98%</div>
+        <div class="lbl">Tingkat kepuasan siswa</div>
       </div>
     </div>
   </div>
@@ -73,32 +108,44 @@
 <div class="section-divider"></div>
 
 <!-- ===== KURIKULUM SECTION ===== -->
-<section id="kurikulum" aria-labelledby="kurikulum-heading">
+<section id="kurikulum" class="kurikulum">
   <div class="container">
-    <div class="section-header animate-on-scroll">
-      <div class="section-label"><i class="fas fa-book-open"></i> Pembelajaran</div>
-      <h2 class="section-title" id="kurikulum-heading">📚 Kurikulum</h2>
-      <p class="section-desc">Mata pelajaran yang dirancang untuk membekali siswa dengan keterampilan industri terkini.</p>
+    <div class="kurikulum-header animate-on-scroll">
+      <p class="section-eyebrow">Program Pembelajaran</p>
+      <h2 class="section-title display">📚 Kurikulum & Modul Belajar</h2>
+      <p class="section-sub" style="margin: 0 auto;">Mata pelajaran kejuruan TJKT yang dirancang selaras dengan kebutuhan industri teknologi modern.</p>
     </div>
-    <div class="kurikulum-grid">
+    
+    <div class="subjects-grid">
       @foreach($kurikulum as $i => $mapel)
-      <div class="kurikulum-item animate-on-scroll" style="animation-delay: {{ $i * 0.05 }}s">
-        <div class="kurikulum-number">{{ $i + 1 }}</div>
-        <div class="kurikulum-name">{{ $mapel->nama_mapel }}</div>
-        <div class="kurikulum-actions">
-          <a href="{{ $mapel->modul_url }}"
-             class="btn btn-secondary btn-sm"
-             id="modul-{{ $mapel->id }}"
-             target="_blank" rel="noopener"
-             aria-label="Download Modul {{ $mapel->nama_mapel }}">
-            <i class="fas fa-download"></i> Download Modul
+      @php
+        $colors = ['blue', 'orange', 'purple'];
+        $color = $colors[$i % 3];
+      @endphp
+      <div class="subject-card animate-on-scroll" style="animation-delay: {{ $i * 0.05 }}s">
+        <div class="subject-icon {{ $color }}">
+          @if($color === 'blue')
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          @elseif($color === 'orange')
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4"/></svg>
+          @else
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+          @endif
+        </div>
+        <h4>{{ $mapel->nama_mapel }}</h4>
+        <p>{{ $mapel->deskripsi ?: 'Pelajari konsep dasar, konfigurasi praktis, dan troubleshooting mendalam terkait ' . strtolower($mapel->nama_mapel) . '.' }}</p>
+        @if($mapel->kelas)
+        <span class="subject-tag tag-{{ $color }}">Kelas {{ $mapel->kelas }}</span>
+        @else
+        <span class="subject-tag tag-{{ $color }}">Kelas X</span>
+        @endif
+        
+        <div style="display:flex; gap:10px; margin-top:20px;">
+          <a href="{{ $mapel->modul_url }}" class="cta-btn-main" style="padding: 8px 14px; font-size: 13px; text-align: center; flex: 1; border-radius: 6px;" target="_blank" rel="noopener">
+            <i class="fas fa-download" style="margin-right: 4px;"></i> Modul
           </a>
-          <a href="{{ $mapel->roadmap_url }}"
-             class="btn btn-ghost btn-sm"
-             id="roadmap-{{ $mapel->id }}"
-             target="_blank" rel="noopener"
-             aria-label="Lihat Roadmap {{ $mapel->nama_mapel }}">
-            <i class="fas fa-map"></i> Lihat Roadmap
+          <a href="{{ $mapel->roadmap_url }}" class="cta-btn-sec" style="padding: 8px 14px; font-size: 13px; text-align: center; flex: 1; border-radius: 6px; border-color: rgba(15,36,71,0.15); color: var(--primary);" target="_blank" rel="noopener">
+            <i class="fas fa-map" style="margin-right: 4px;"></i> Roadmap
           </a>
         </div>
       </div>
@@ -109,80 +156,103 @@
 
 <div class="section-divider"></div>
 
-<!-- ===== GALERI SECTION ===== -->
-<section id="galeri" aria-labelledby="galeri-heading">
+<!-- ===== LAYANAN SECTION ===== -->
+<section id="eservice" class="layanan">
   <div class="container">
-    <div class="section-header animate-on-scroll">
-      <div class="section-label"><i class="fab fa-instagram"></i> Instagram</div>
-      <h2 class="section-title" id="galeri-heading">📝 Galeri Foto</h2>
-      <p class="section-desc">Postingan terbaru dari Instagram <strong>@{{ $ig_username }}</strong></p>
+    <div class="layanan-header animate-on-scroll">
+      <p class="section-eyebrow">Portal Digital</p>
+      <h2 class="section-title display">Layanan E-Service</h2>
+      <p class="section-sub">Akses berbagai aplikasi internal dan sistem informasi TJKT SMK Fadris dalam satu pintu — cepat, mudah, dan terintegrasi.</p>
     </div>
 
-    @if($galeri->isNotEmpty())
-    <div class="galeri-grid">
-      @foreach($galeri as $foto)
-      <a href="{{ $foto->instagram_url }}"
-         class="galeri-item animate-on-scroll"
-         target="_blank" rel="noopener"
-         aria-label="{{ $foto->judul ?? 'Foto Galeri' }}">
-        <img src="{{ $foto->foto_url }}"
-             alt="{{ $foto->judul ?? 'Galeri TJKT' }}"
-             loading="lazy" />
-        <div class="galeri-overlay">
-          <div class="galeri-overlay-content">
-            <i class="fab fa-instagram"></i>
-            <span>Lihat di Instagram</span>
+    @php
+      $iconColors = ['icon-blue','icon-purple','icon-green','icon-rose','icon-amber','icon-teal'];
+      $icons = ['🖥️','👨‍👩‍👧','📚','📊','🔧','🌐'];
+    @endphp
+
+    <div class="services-grid">
+      @foreach($eservice as $i => $svc)
+      @php
+        $colorClass = $iconColors[$i % count($iconColors)];
+        $icon = $icons[$i % count($icons)];
+      @endphp
+      <a href="{{ $svc->url }}" class="service-item animate-on-scroll" style="animation-delay:{{ $i * 0.07 }}s" target="_blank" rel="noopener">
+        <div class="service-icon-wrap {{ $colorClass }}">{{ $icon }}</div>
+        <div class="service-body">
+          <h4>{{ $svc->nama }}</h4>
+          <p>{{ $svc->deskripsi }}</p>
+          <div class="service-link-row">
+            Buka Layanan <i class="fas fa-arrow-right" style="font-size:10px;"></i>
           </div>
         </div>
       </a>
       @endforeach
     </div>
-    @else
-    <div class="instagram-placeholder animate-on-scroll">
-      <i class="fab fa-instagram"></i>
-      <h3>@{{ $ig_username }}</h3>
-      <p>Ikuti kami di Instagram untuk melihat kegiatan dan aktivitas terbaru TJKT SMK Fadris.</p>
-      <a href="https://www.instagram.com/{{ $ig_username }}/"
-         target="_blank" rel="noopener"
-         class="btn btn-primary"
-         id="btn-instagram">
-        <i class="fab fa-instagram"></i> Ikuti di Instagram
-      </a>
-    </div>
-    @endif
   </div>
 </section>
 
+
 <div class="section-divider"></div>
 
-<!-- ===== E-SERVICE SECTION ===== -->
-<section id="eservice" aria-labelledby="eservice-heading">
+<!-- ===== GALERI SECTION ===== -->
+<section id="galeri" class="galeri">
   <div class="container">
-    <div class="section-header animate-on-scroll">
-      <div class="section-label"><i class="fas fa-laptop-code"></i> Digital</div>
-      <h2 class="section-title" id="eservice-heading">📅 Layanan E-Service</h2>
-      <p class="section-desc">Akses layanan digital sekolah secara mudah dan cepat dari mana saja.</p>
-    </div>
-    <div class="eservice-grid">
-      @foreach($eservice as $svc)
-      <a href="{{ $svc->url }}"
-         class="eservice-card animate-on-scroll"
-         target="_blank" rel="noopener"
-         id="eservice-{{ $svc->id }}"
-         aria-label="{{ $svc->nama }}">
-        <div class="eservice-icon" style="background: {{ $svc->warna }}">
-          <i class="{{ $svc->icon }}"></i>
-        </div>
-        <div>
-          <h3>{{ $svc->nama }}</h3>
-          <p>{{ $svc->deskripsi }}</p>
-          <div class="eservice-url">{{ parse_url($svc->url, PHP_URL_HOST) ?: $svc->url }}</div>
-        </div>
-        <span class="btn btn-secondary btn-sm" style="pointer-events:none">
-          <i class="fas fa-external-link-alt"></i> Buka Layanan
-        </span>
+    <div class="galeri-header animate-on-scroll">
+      <div>
+        <p class="section-eyebrow">Aktivitas Kami</p>
+        <h2 class="section-title display">📸 Galeri Kegiatan</h2>
+      </div>
+      <a href="https://www.instagram.com/{{ $ig_username }}/" class="galeri-link" target="_blank" rel="noopener">
+        <span>@</span>{{ $ig_username }} <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M5 12l5-5-5-5"/></svg>
       </a>
-      @endforeach
+    </div>
+
+    <div class="galeri-grid">
+      @if($galeri->isNotEmpty())
+        @foreach($galeri as $i => $foto)
+        <a href="{{ $foto->instagram_url }}" class="galeri-item {{ $i === 0 ? 'tall' : '' }} animate-on-scroll" target="_blank" rel="noopener">
+          <img src="{{ $foto->foto_url }}" alt="{{ $foto->judul ?? 'Galeri TJKT' }}" style="width:100%; height:100%; object-fit:cover;" />
+          <div class="galeri-overlay">
+            <div class="galeri-overlay-content">
+              <i class="fab fa-instagram"></i>
+              <span>Lihat di Instagram</span>
+            </div>
+          </div>
+        </a>
+        @endforeach
+      @else
+        <!-- Fallback placeholders to match mockup exactly -->
+        <div class="galeri-item tall g1 animate-on-scroll">
+          <div class="galeri-placeholder">
+            <span class="galeri-icon">💻</span>
+            <span class="galeri-label">Praktikum Jaringan</span>
+          </div>
+        </div>
+        <div class="galeri-item g2 animate-on-scroll">
+          <div class="galeri-placeholder">
+            <span class="galeri-icon">⚡</span>
+            <span class="galeri-label">Instalasi Fiber Optik</span>
+          </div>
+        </div>
+        <div class="galeri-item g3 animate-on-scroll">
+          <div class="galeri-placeholder">
+            <span class="galeri-icon">🛡️</span>
+            <span class="galeri-label">Uji Cybersecurity</span>
+          </div>
+        </div>
+        <div class="galeri-item g4 animate-on-scroll">
+          <div class="galeri-placeholder">
+            <span class="galeri-icon">🚀</span>
+            <span class="galeri-label">Project IoT</span>
+          </div>
+        </div>
+        <div class="galeri-item g5 animate-on-scroll">
+          <div class="galeri-placeholder">
+            <span class="galeri-icon">🎓</span>
+            <span class="galeri-label">Uji Sertifikasi</span>
+          </div>
+        </div>
+      @endif
     </div>
   </div>
 </section>
@@ -190,23 +260,63 @@
 <div class="section-divider"></div>
 
 <!-- ===== KEUNGGULAN SECTION ===== -->
-<section id="keunggulan" aria-labelledby="keunggulan-heading">
-  <div class="container">
-    <div class="section-header animate-on-scroll">
-      <div class="section-label"><i class="fas fa-star"></i> Keunggulan</div>
-      <h2 class="section-title" id="keunggulan-heading">🌟 Kenapa Memilih TJKT SMK Fadris?</h2>
-      <p class="section-desc">Kami berkomitmen untuk memberikan pendidikan vokasi terbaik yang menghasilkan lulusan berkualitas.</p>
-    </div>
-    <div class="keunggulan-grid">
-      @foreach($keunggulan as $k)
-      <div class="keunggulan-card animate-on-scroll">
-        <div class="keunggulan-icon" aria-hidden="true">
-          <i class="{{ $k->icon }}"></i>
+<section id="keunggulan" class="keunggulan">
+  <div class="container keunggulan-inner">
+    <div>
+      <p class="section-eyebrow">Mengapa Kami</p>
+      <h2 class="section-title display">🌟 Keunggulan TJKT SMK Fadris</h2>
+      <p class="section-sub">Komitmen penuh kami dalam menyelenggarakan pendidikan vokasi berkualitas unggul, berorientasi industri, dan berdaya saing global.</p>
+      
+      <div class="keunggulan-list">
+        @foreach($keunggulan as $k)
+        <div class="keunggulan-item animate-on-scroll">
+          <div class="k-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="k-body">
+            <h4>{{ $k->judul }}</h4>
+            <p>{{ $k->deskripsi }}</p>
+          </div>
         </div>
-        <h3>{{ $k->judul }}</h3>
-        <p>{{ $k->deskripsi }}</p>
+        @endforeach
       </div>
-      @endforeach
+    </div>
+    
+    <div class="keunggulan-visual animate-on-scroll">
+      <div class="kv-grid"></div>
+      <div class="kv-content">
+        <div class="kv-title">Pencapaian Mutu Lulusan</div>
+        <div class="kv-stats">
+          <div class="kv-stat">
+            <div class="n">92<em>%</em></div>
+            <div class="l">Penyerapan Kerja Lulusan</div>
+          </div>
+          <div class="kv-stat">
+            <div class="n">100<em>%</em></div>
+            <div class="l">Kelulusan Sertifikasi Mikrotik & Cisco</div>
+          </div>
+        </div>
+        
+        <div class="kv-bar">
+          <div class="kv-bar-label">
+            <span>Kesiapan Kerja Lulusan</span>
+            <span>95%</span>
+          </div>
+          <div class="kv-bar-track">
+            <div class="kv-bar-fill" style="width: 95%"></div>
+          </div>
+        </div>
+        
+        <div class="kv-bar" style="margin-top:20px">
+          <div class="kv-bar-label">
+            <span>Kepuasan Mitra Industri (DUDI)</span>
+            <span>98%</span>
+          </div>
+          <div class="kv-bar-track">
+            <div class="kv-bar-fill" style="width: 98%; background: var(--accent2);"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -214,62 +324,63 @@
 <div class="section-divider"></div>
 
 <!-- ===== KONTAK SECTION ===== -->
-<section id="kontak" aria-labelledby="kontak-heading">
-  <div class="container">
-    <div class="section-header animate-on-scroll">
-      <div class="section-label"><i class="fas fa-headset"></i> Hubungi</div>
-      <h2 class="section-title" id="kontak-heading">📞 Hubungi Kami</h2>
-    </div>
-    <div class="kontak-wrapper">
-      <div class="kontak-info animate-on-scroll">
-        <h2>Mari Terhubung Bersama Kami</h2>
-        <p>Jangan ragu untuk menghubungi kami jika ada pertanyaan seputar jurusan TJKT SMK Fadris.</p>
-        <div class="kontak-items">
-          @if($kontak && !empty($kontak->email))
-          <a href="mailto:{{ $kontak->email }}" class="kontak-item" id="kontak-email">
-            <div class="kontak-icon"><i class="fas fa-envelope"></i></div>
-            <span>📧 {{ $kontak->email }}</span>
-          </a>
-          @endif
-          @if($kontak && !empty($kontak->whatsapp))
-          <a href="https://wa.me/{{ $kontak->whatsapp_formatted }}"
-             class="kontak-item" id="kontak-wa" target="_blank" rel="noopener">
-            <div class="kontak-icon" style="background: linear-gradient(135deg, #25d366, #128c7e)">
-              <i class="fab fa-whatsapp"></i>
-            </div>
-            <span>📱 {{ $kontak->whatsapp }}</span>
-          </a>
-          @endif
-          @if($kontak && !empty($kontak->website))
-          <a href="{{ $kontak->website_formatted }}"
-             class="kontak-item" id="kontak-web" target="_blank" rel="noopener">
-            <div class="kontak-icon"><i class="fas fa-globe"></i></div>
-            <span>🌐 {{ $kontak->website }}</span>
-          </a>
-          @endif
-          @if($kontak && !empty($kontak->alamat))
-          <div class="kontak-item">
-            <div class="kontak-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <span>📍 {{ $kontak->alamat }}</span>
+<section id="kontak" class="kontak">
+  <div class="container kontak-inner">
+    <div class="kontak-info animate-on-scroll">
+      <p class="section-eyebrow">Hubungi Kami</p>
+      <h2 class="section-title display">📞 Mari Terhubung</h2>
+      <p class="section-sub" style="margin-bottom:32px">Punya pertanyaan seputar kurikulum, kerja sama industri, atau pendaftaran siswa baru? Tim kami siap melayani Anda.</p>
+      
+      <div style="display:flex; flex-direction:column; gap:20px">
+        @if($kontak && !empty($kontak->email))
+        <div class="kontak-item">
+          <div class="kontak-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
-          @endif
+          <div>
+            <small>Kirim Email</small>
+            <span>{{ $kontak->email }}</span>
+          </div>
         </div>
+        @endif
+        
+        @if($kontak && !empty($kontak->whatsapp))
+        <div class="kontak-item">
+          <div class="kontak-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <small>Layanan WhatsApp</small>
+            <span>{{ $kontak->whatsapp }}</span>
+          </div>
+        </div>
+        @endif
+        
+        @if($kontak && !empty($kontak->alamat))
+        <div class="kontak-item">
+          <div class="kontak-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <small>Alamat Sekolah</small>
+            <span>{{ $kontak->alamat }}</span>
+          </div>
+        </div>
+        @endif
       </div>
-
-      <div class="kontak-cta animate-on-scroll">
-        <div class="kontak-cta-icon" aria-hidden="true">🚀</div>
-        <h3>Daftar Sekarang!</h3>
-        <p>Jadilah bagian dari keluarga besar TJKT SMK Fadris dan raih masa depan cerah di dunia teknologi.</p>
+    </div>
+    
+    <div class="cta-box animate-on-scroll">
+      <div class="cta-glow"></div>
+      <h3>Tertarik Bergabung Bersama Kami?</h3>
+      <p>Persiapkan karier masa depan cerlang di bidang IT & Networking bersama ribuan lulusan sukses TJKT SMK Fadris.</p>
+      <div class="cta-btns">
         @if($kontak)
-        <a href="https://wa.me/{{ $kontak->whatsapp_formatted }}"
-           class="btn btn-primary" id="btn-daftar-kontak"
-           target="_blank" rel="noopener">
-          <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
+        <a href="https://wa.me/{{ $kontak->whatsapp_formatted }}" class="cta-btn-main btn-whatsapp" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp" style="margin-right:6px"></i> Hubungi WhatsApp
         </a>
-        <a href="{{ $kontak->website_formatted }}"
-           class="btn btn-ghost" id="btn-web-kontak"
-           target="_blank" rel="noopener">
-          <i class="fas fa-globe"></i> Kunjungi Website Resmi
+        <a href="{{ $kontak->website_formatted }}" class="cta-btn-sec" target="_blank" rel="noopener">
+          <i class="fas fa-globe" style="margin-right:6px"></i> Kunjungi Website
         </a>
         @endif
       </div>

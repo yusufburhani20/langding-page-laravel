@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@yield('title', 'Dashboard') – Admin TJKT SMK Fadris</title>
   <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/x-icon" href="{{ isset($site_favicon) && !empty($site_favicon) ? asset($site_favicon) : asset('favicon.ico') }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}" />
