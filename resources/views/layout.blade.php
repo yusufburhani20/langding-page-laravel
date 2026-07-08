@@ -62,7 +62,7 @@
     <li><a href="{{ request()->routeIs('home') ? '#eservice' : route('home') . '#eservice' }}">E-Service</a></li>
     <li><a href="{{ request()->routeIs('home') ? '#galeri' : route('home') . '#galeri' }}">Galeri</a></li>
     <li><a href="{{ request()->routeIs('home') ? '#keunggulan' : route('home') . '#keunggulan' }}">Keunggulan</a></li>
-    <li><a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.*') ? 'active' : '' }}">Berita</a></li>
+    <li><a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.*') ? 'active' : '' }}">Blog</a></li>
     <li><a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}">Kontak</a></li>
     <li><a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}" class="nav-cta-btn">Daftar Sekarang</a></li>
   </ul>
