@@ -8,7 +8,7 @@
   <link rel="icon" type="image/x-icon" href="{{ isset($site_favicon) && !empty($site_favicon) ? asset($site_favicon) : asset('favicon.ico') }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}" />
+  <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}?v={{ file_exists(public_path('assets/css/admin.css')) ? filemtime(public_path('assets/css/admin.css')) : time() }}" />
   @stack('styles')
 </head>
 <body>
