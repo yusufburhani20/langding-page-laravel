@@ -66,7 +66,7 @@ class SettingsController extends Controller
             $hasError = false;
 
             // 1. Git Pull
-            $gitProcess = \Illuminate\Support\Facades\Process::run('git pull https://github.com/yusufburhani20/langding-page-laravel.git main');
+            $gitProcess = \Illuminate\Support\Facades\Process::path(base_path())->run('git pull https://github.com/yusufburhani20/langding-page-laravel.git main');
             $output[] = "=== 1. GIT PULL ===";
             $output[] = $gitProcess->successful() ? $gitProcess->output() : $gitProcess->errorOutput();
             if (!$gitProcess->successful()) $hasError = true;
@@ -74,17 +74,17 @@ class SettingsController extends Controller
             // Lanjut ke step berikutnya hanya jika git pull berhasil (mencegah error berantai)
             if (!$hasError) {
                 // 2. Composer Install
-                $composerProcess = \Illuminate\Support\Facades\Process::run('composer install --no-interaction --prefer-dist --optimize-autoloader');
+                $composerProcess = \Illuminate\Support\Facades\Process::path(base_path())->run('composer install --no-interaction --prefer-dist --optimize-autoloader');
                 $output[] = "=== 2. COMPOSER INSTALL ===";
                 $output[] = $composerProcess->successful() ? $composerProcess->output() : $composerProcess->errorOutput();
                 
                 // 3. Migrate Database
-                $migrateProcess = \Illuminate\Support\Facades\Process::run('php artisan migrate --force');
+                $migrateProcess = \Illuminate\Support\Facades\Process::path(base_path())->run('php artisan migrate --force');
                 $output[] = "=== 3. MIGRATE DATABASE ===";
                 $output[] = $migrateProcess->successful() ? $migrateProcess->output() : $migrateProcess->errorOutput();
 
                 // 4. Optimize Clear & Cache Reset
-                $optimizeProcess = \Illuminate\Support\Facades\Process::run('php artisan optimize:clear');
+                $optimizeProcess = \Illuminate\Support\Facades\Process::path(base_path())->run('php artisan optimize:clear');
                 $output[] = "=== 4. CLEAR CACHE ===";
                 $output[] = $optimizeProcess->successful() ? $optimizeProcess->output() : $optimizeProcess->errorOutput();
             }
