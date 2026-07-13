@@ -59,12 +59,42 @@ class SettingsController extends Controller
     public function gitUpdate()
     {
         try {
-            $process = \Illuminate\Support\Facades\Process::run('git pull https://github.com/yusufburhani20/langding-page-laravel.git main');
-            
-            if ($process->successful()) {
-                return back()->with('success', 'Sistem berhasil diupdate dari GitHub. Output: ' . $process->output());
+            // Tambah batas waktu eksekusi agar tidak timeout di tengah jalan
+            set_time_limit(300);
+
+            $output = [];
+            $hasError = false;
+
+            // 1. Git Pull
+            $gitProcess = \Illuminate\Support\Facades\Process::run('git pull https://github.com/yusufburhani20/langding-page-laravel.git main');
+            $output[] = "=== 1. GIT PULL ===";
+            $output[] = $gitProcess->successful() ? $gitProcess->output() : $gitProcess->errorOutput();
+            if (!$gitProcess->successful()) $hasError = true;
+
+            // Lanjut ke step berikutnya hanya jika git pull berhasil (mencegah error berantai)
+            if (!$hasError) {
+                // 2. Composer Install
+                $composerProcess = \Illuminate\Support\Facades\Process::run('composer install --no-interaction --prefer-dist --optimize-autoloader');
+                $output[] = "=== 2. COMPOSER INSTALL ===";
+                $output[] = $composerProcess->successful() ? $composerProcess->output() : $composerProcess->errorOutput();
+                
+                // 3. Migrate Database
+                $migrateProcess = \Illuminate\Support\Facades\Process::run('php artisan migrate --force');
+                $output[] = "=== 3. MIGRATE DATABASE ===";
+                $output[] = $migrateProcess->successful() ? $migrateProcess->output() : $migrateProcess->errorOutput();
+
+                // 4. Optimize Clear & Cache Reset
+                $optimizeProcess = \Illuminate\Support\Facades\Process::run('php artisan optimize:clear');
+                $output[] = "=== 4. CLEAR CACHE ===";
+                $output[] = $optimizeProcess->successful() ? $optimizeProcess->output() : $optimizeProcess->errorOutput();
+            }
+
+            $finalOutput = implode("\n", $output);
+
+            if ($hasError) {
+                return back()->with('error', "Gagal melakukan update:\n" . $finalOutput);
             } else {
-                return back()->with('error', 'Gagal melakukan update: ' . $process->errorOutput());
+                return back()->with('success', "Deploy Berhasil! Sistem telah diperbarui:\n" . $finalOutput);
             }
         } catch (\Exception $e) {
             return back()->with('error', 'Terjadi kesalahan saat update: ' . $e->getMessage());
