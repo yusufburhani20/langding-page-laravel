@@ -116,13 +116,21 @@
       <p class="section-sub" style="margin: 0 auto;">Mata pelajaran kejuruan TJKT yang dirancang selaras dengan kebutuhan industri teknologi modern.</p>
     </div>
     
+    <div class="kurikulum-filter animate-on-scroll">
+      <button class="filter-btn active" data-filter="all">Semua</button>
+      <button class="filter-btn" data-filter="X">Kelas X</button>
+      <button class="filter-btn" data-filter="XI">Kelas XI</button>
+      <button class="filter-btn" data-filter="XII">Kelas XII</button>
+    </div>
+
     <div class="subjects-grid">
       @foreach($kurikulum as $i => $mapel)
       @php
         $colors = ['blue', 'orange', 'purple'];
         $color = $colors[$i % 3];
+        $kelas = $mapel->kelas ?: 'X';
       @endphp
-      <div class="subject-card animate-on-scroll" style="animation-delay: {{ $i * 0.05 }}s">
+      <div class="subject-card animate-on-scroll" data-kelas="{{ $kelas }}" style="animation-delay: {{ $i * 0.05 }}s">
         <div class="subject-icon {{ $color }}">
           @if($color === 'blue')
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -388,3 +396,36 @@
   </div>
 </section>
 @endsection
+
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.subject-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Remove active class from all
+      filterBtns.forEach(b => b.classList.remove('active'));
+      // Add active to current
+      this.classList.add('active');
+
+      const filterValue = this.getAttribute('data-filter');
+
+      cards.forEach(card => {
+        if (filterValue === 'all' || card.getAttribute('data-kelas') === filterValue) {
+          card.style.display = 'block';
+          // simple reflow trick for animation trigger
+          card.style.animation = 'none';
+          card.offsetHeight; 
+          card.style.animation = null;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
+@endpush
