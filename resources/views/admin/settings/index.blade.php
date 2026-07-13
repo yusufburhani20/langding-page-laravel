@@ -129,4 +129,23 @@
     </form>
   </div>
 </div>
+
+<div class="card" style="margin-top: 2rem;">
+  <div class="card-header">
+    <h2 class="card-title">Sistem & Update</h2>
+  </div>
+  <div class="card-body">
+    <div class="settings-section" style="margin-bottom: 0;">
+        <h3 class="section-title-small"><i class="fab fa-github"></i> Update via GitHub</h3>
+        <p class="form-help" style="margin-bottom: 1rem;">Tarik pembaruan terbaru dari repositori GitHub (https://github.com/yusufburhani20/langding-page-laravel.git) secara otomatis.</p>
+        
+        <form method="POST" action="{{ route('admin.settings.git-update') }}">
+            @csrf
+            <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin menarik pembaruan terbaru dari GitHub?')" style="background-color: #24292e; border-color: #24292e;">
+                <i class="fas fa-sync-alt"></i> Update Sekarang dari GitHub
+            </button>
+        </form>
+    </div>
+  </div>
+</div>
 @endsection

@@ -55,4 +55,19 @@ class SettingsController extends Controller
 
         return back()->with('success', 'Pengaturan berhasil disimpan.');
     }
+
+    public function gitUpdate()
+    {
+        try {
+            $process = \Illuminate\Support\Facades\Process::run('git pull https://github.com/yusufburhani20/langding-page-laravel.git main');
+            
+            if ($process->successful()) {
+                return back()->with('success', 'Sistem berhasil diupdate dari GitHub. Output: ' . $process->output());
+            } else {
+                return back()->with('error', 'Gagal melakukan update: ' . $process->errorOutput());
+            }
+        } catch (\Exception $e) {
+            return back()->with('error', 'Terjadi kesalahan saat update: ' . $e->getMessage());
+        }
+    }
 }

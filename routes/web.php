@@ -61,6 +61,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Settings
         Route::get('/settings',  [SettingsController::class, 'index'])->name('settings.index');
         Route::put('/settings',  [SettingsController::class, 'update'])->name('settings.update');
+        Route::post('/settings/git-update', [SettingsController::class, 'gitUpdate'])->name('settings.git-update');
 
         // Users
         Route::get('/users',                 [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
