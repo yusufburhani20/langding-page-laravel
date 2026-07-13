@@ -8,6 +8,7 @@ use App\Models\Galeri;
 use App\Models\Eservice;
 use App\Models\Keunggulan;
 use App\Models\Kontak;
+use App\Models\Post;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,11 @@ class HomeController extends Controller
             'eservice'      => Eservice::aktif()->get(),
             'keunggulan'    => Keunggulan::aktif()->get(),
             'kontak'        => Kontak::query()->first(),
+            'latest_posts'  => Post::with('category', 'author', 'images')
+                                   ->where('status', 'published')
+                                   ->latest()
+                                   ->take(3)
+                                   ->get(),
         ]);
     }
 }

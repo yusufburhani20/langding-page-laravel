@@ -107,6 +107,57 @@
 
 <div class="section-divider"></div>
 
+<!-- ===== KABAR TERBARU SECTION ===== -->
+@if(isset($latest_posts) && $latest_posts->isNotEmpty())
+<section id="berita" class="latest-posts-section">
+  <div class="container">
+    <div class="kurikulum-header animate-on-scroll">
+      <p class="section-eyebrow">Berita & Informasi</p>
+      <h2 class="section-title display">📝 Kabar Terbaru</h2>
+      <p class="section-sub" style="margin: 0 auto;">Ikuti informasi terhangat seputar kegiatan dan perkembangan jurusan.</p>
+    </div>
+    
+    <div class="latest-posts-grid">
+      @foreach($latest_posts as $post)
+      <a href="{{ route('blog.show', $post->slug) }}" class="post-card animate-on-scroll" style="animation-delay: {{ $loop->index * 0.1 }}s">
+        @if($post->featured_image)
+          <img src="{{ asset($post->featured_image) }}" alt="{{ $post->title }}" class="post-card-img">
+        @elseif($post->images && $post->images->isNotEmpty())
+          <img src="{{ asset($post->images->first()->image_path) }}" alt="{{ $post->title }}" class="post-card-img">
+        @else
+          <div class="post-card-img-placeholder">📄</div>
+        @endif
+
+        <div class="post-card-body">
+          <div class="post-card-meta">
+            <span class="post-card-cat">{{ $post->category->name ?? 'Umum' }}</span>
+            <span class="post-card-date">{{ $post->created_at->translatedFormat('d M Y') }}</span>
+          </div>
+          <div class="post-card-title">{{ $post->title }}</div>
+          <p class="post-card-excerpt">{{ Str::limit($post->excerpt, 100) }}</p>
+          <div class="post-card-footer">
+            <div class="post-card-author">
+              <div class="author-avatar">{{ strtoupper(substr($post->author->nama ?? 'A', 0, 1)) }}</div>
+              <span>{{ $post->author->nama ?? 'Admin' }}</span>
+            </div>
+            <span class="post-card-read">Baca <i class="fas fa-arrow-right" style="font-size:10px;"></i></span>
+          </div>
+        </div>
+      </a>
+      @endforeach
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px;" class="animate-on-scroll">
+      <a href="{{ route('blog.index') }}" class="cta-btn-sec" style="color: var(--primary); border-color: rgba(15,36,71,0.15);">
+        Lihat Semua Berita <i class="fas fa-arrow-right" style="margin-left:6px; font-size:12px;"></i>
+      </a>
+    </div>
+  </div>
+</section>
+@endif
+
+<div class="section-divider"></div>
+
 <!-- ===== KURIKULUM SECTION ===== -->
 <section id="kurikulum" class="kurikulum">
   <div class="container">
