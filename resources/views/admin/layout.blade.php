@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}?v={{ file_exists(public_path('assets/css/admin.css')) ? filemtime(public_path('assets/css/admin.css')) : time() }}" />
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
   @stack('styles')
 </head>
 <body>
@@ -144,6 +145,24 @@
 </div>
 
 <script src="{{ asset('assets/js/admin.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const tables = document.querySelectorAll('.table');
+    tables.forEach(function(table) {
+        new simpleDatatables.DataTable(table, {
+            searchable: true,
+            fixedHeight: false,
+            labels: {
+                placeholder: "Cari data...",
+                perPage: "data per halaman",
+                noRows: "Tidak ada data yang ditemukan",
+                info: "Menampilkan {start} sampai {end} dari {rows} data",
+            }
+        });
+    });
+});
+</script>
 @stack('scripts')
 </body>
 </html>

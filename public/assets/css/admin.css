@@ -699,3 +699,51 @@ input:checked + .toggle-slider::before { transform: translateX(20px); }
 .quick-card:hover i {
     color: white;
 }
+
+/* ===== SIMPLE DATATABLES OVERRIDES ===== */
+.dataTable-wrapper.no-footer .dataTable-container {
+    border-bottom: 1px solid var(--border);
+}
+.dataTable-top, .dataTable-bottom {
+    padding: 1rem 0;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+.dataTable-input {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-primary);
+    border-radius: var(--radius-sm);
+    padding: 0.4rem 0.75rem;
+    outline: none;
+}
+.dataTable-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+}
+.dataTable-selector {
+    background: var(--dark-surface);
+    color: var(--text-primary);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-sm);
+    padding: 0.2rem;
+    outline: none;
+}
+.dataTable-pagination a {
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+}
+.dataTable-pagination a:hover {
+    background: var(--glass);
+    color: var(--text-primary);
+}
+.dataTable-pagination .active a, .dataTable-pagination .active a:hover {
+    background: var(--primary);
+    color: white;
+}
+.dataTable-sorter::before, .dataTable-sorter::after {
+    opacity: 0.3;
+}
+.dataTable-table > tbody > tr > td, .dataTable-table > tbody > tr > th, .dataTable-table > tfoot > tr > td, .dataTable-table > tfoot > tr > th, .dataTable-table > thead > tr > td, .dataTable-table > thead > tr > th {
+    vertical-align: middle;
+}
