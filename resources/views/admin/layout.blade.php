@@ -57,6 +57,9 @@
       <a href="{{ route('admin.kontak.edit') }}" class="sidebar-link {{ request()->routeIs('admin.kontak.*') ? 'active' : '' }}" id="nav-kontak">
         <i class="fas fa-phone-alt"></i> Kontak
       </a>
+      <a href="{{ route('admin.downloads.index') }}" class="sidebar-link {{ request()->routeIs('admin.downloads.*') ? 'active' : '' }}" id="nav-downloads">
+        <i class="fas fa-download"></i> Pusat Download
+      </a>
 
       <div class="nav-section-title">Akun & Sistem</div>
       <a href="{{ route('admin.users.index') }}" class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" id="nav-users">

@@ -10,12 +10,18 @@ use App\Http\Controllers\Admin\EserviceController;
 use App\Http\Controllers\Admin\KeunggulanController;
 use App\Http\Controllers\Admin\KontakController;
 use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\DownloadController as AdminDownloadController;
+use App\Http\Controllers\DownloadController;
 
 // ===== PUBLIC ROUTES =====
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
 Route::get('/category/{slug}', [App\Http\Controllers\BlogController::class, 'category'])->name('blog.category');
+
+// Pusat Download (publik)
+Route::get('/download', [DownloadController::class, 'index'])->name('download.index');
+Route::get('/download/{id}', [DownloadController::class, 'download'])->name('download.get');
 
 // ===== ADMIN ROUTES =====
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -83,6 +89,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Media Upload for TinyMCE
         Route::post('/media/upload', [App\Http\Controllers\Admin\MediaController::class, 'upload'])->name('media.upload');
+
+        // Pusat Download
+        Route::resource('downloads', AdminDownloadController::class)->except(['show']);
     });
 });
 

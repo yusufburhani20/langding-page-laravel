@@ -42,6 +42,15 @@
       <div class="label">Keunggulan</div>
     </div>
   </div>
+  <div class="stat-card animate-on-scroll">
+    <div class="stat-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2)">
+      <i class="fas fa-download"></i>
+    </div>
+    <div class="stat-info">
+      <div class="number">{{ $total_downloads }}</div>
+      <div class="label">File Download</div>
+    </div>
+  </div>
 </div>
 
 <div class="quick-actions">
@@ -70,6 +79,10 @@
     <a href="{{ route('admin.kontak.edit') }}" class="quick-card" id="quick-kontak">
       <i class="fas fa-phone-alt"></i>
       <span>Kontak</span>
+    </a>
+    <a href="{{ route('admin.downloads.index') }}" class="quick-card" id="quick-downloads">
+      <i class="fas fa-download"></i>
+      <span>Pusat Download</span>
     </a>
   </div>
 </div>

@@ -63,6 +63,7 @@
     <li><a href="{{ request()->routeIs('home') ? '#galeri' : route('home') . '#galeri' }}">Galeri</a></li>
     <li><a href="{{ request()->routeIs('home') ? '#keunggulan' : route('home') . '#keunggulan' }}">Keunggulan</a></li>
     <li><a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.*') ? 'active' : '' }}">Blog</a></li>
+    <li><a href="{{ route('download.index') }}" class="{{ request()->routeIs('download.*') ? 'active' : '' }}">Download</a></li>
     <li><a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}">Kontak</a></li>
     <li><a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}" class="nav-cta-btn">Daftar Sekarang</a></li>
   </ul>
@@ -80,6 +81,7 @@
   <a href="{{ request()->routeIs('home') ? '#galeri' : route('home') . '#galeri' }}">Galeri</a>
   <a href="{{ request()->routeIs('home') ? '#keunggulan' : route('home') . '#keunggulan' }}">Keunggulan</a>
   <a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.*') ? 'active' : '' }}">Berita</a>
+  <a href="{{ route('download.index') }}" class="{{ request()->routeIs('download.*') ? 'active' : '' }}">Download</a>
   <a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}">Kontak</a>
   <a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}" style="margin-top: 12px; text-align: center; background: var(--accent2); color: white; padding: 10px; border-radius: 6px; font-weight: 700; text-decoration: none; font-family: 'Space Grotesk', sans-serif;">Daftar Sekarang</a>
 </div>
@@ -126,6 +128,7 @@
           <a href="{{ route('home') }}#galeri">Galeri</a>
           <a href="{{ route('home') }}#keunggulan">Keunggulan</a>
           <a href="{{ route('blog.index') }}">Berita</a>
+          <a href="{{ route('download.index') }}">Download</a>
           <a href="{{ route('home') }}#kontak">Kontak</a>
         </div>
       </div>

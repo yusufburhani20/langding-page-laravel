@@ -9,6 +9,7 @@ use App\Models\Eservice;
 use App\Models\Keunggulan;
 use App\Models\Kontak;
 use App\Models\Setting;
+use App\Models\Download;
 
 class DashboardController extends Controller
 {
@@ -19,6 +20,7 @@ class DashboardController extends Controller
             'total_galeri'     => Galeri::count(),
             'total_eservice'   => Eservice::count(),
             'total_keunggulan' => Keunggulan::count(),
+            'total_downloads'  => Download::count(),
             'site_name'        => Setting::get('site_name', 'TJKT SMK Fadris'),
             'admin_nama'       => session('admin_nama', 'Admin'),
         ]);
