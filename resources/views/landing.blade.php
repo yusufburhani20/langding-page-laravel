@@ -64,7 +64,8 @@
 
 <!-- ===== TENTANG JURUSAN ===== -->
 <section id="profil" class="about">
-  <div class="container about-inner animate-on-scroll">
+  <div class="container">
+    <div class="about-inner animate-on-scroll">
     <div>
       <p class="section-eyebrow">Tentang Jurusan</p>
       <h2 class="section-title display">Siap Terjun ke Industri Teknologi</h2>
@@ -101,6 +102,7 @@
         <div class="num">98%</div>
         <div class="lbl">Tingkat kepuasan siswa</div>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -320,7 +322,8 @@
 
 <!-- ===== KEUNGGULAN SECTION ===== -->
 <section id="keunggulan" class="keunggulan">
-  <div class="container keunggulan-inner">
+  <div class="container">
+    <div class="keunggulan-inner">
     <div>
       <p class="section-eyebrow">Mengapa Kami</p>
       <h2 class="section-title display">🌟 Keunggulan TJKT SMK Fadris</h2>
@@ -377,6 +380,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 </section>
 
@@ -384,7 +388,8 @@
 
 <!-- ===== KONTAK SECTION ===== -->
 <section id="kontak" class="kontak">
-  <div class="container kontak-inner">
+  <div class="container">
+    <div class="kontak-inner">
     <div class="kontak-info animate-on-scroll">
       <p class="section-eyebrow">Hubungi Kami</p>
       <h2 class="section-title display">📞 Mari Terhubung</h2>
@@ -443,6 +448,7 @@
         </a>
         @endif
       </div>
+    </div>
     </div>
   </div>
 </section>

@@ -42,34 +42,36 @@
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
-  <a href="{{ route('home') }}" class="navbar-brand" aria-label="{{ $site_name ?? 'Home' }}">
-    <div class="navbar-logo" @if(isset($site_logo) && !empty($site_logo)) style="background: transparent; border-radius: 0; width: auto; height: 42px;" @endif>
-      @if(isset($site_logo) && !empty($site_logo))
-        <img src="{{ asset($site_logo) }}" alt="Logo" style="max-height:100%; max-width:100%; object-fit:contain;">
-      @else
-        TJ
-      @endif
-    </div>
-    <div class="navbar-title">
-      <span>{{ $site_name ?? 'TJKT SMK Fadris' }}</span>
-      <span>Teknik Jaringan &amp; Komputer</span>
-    </div>
-  </a>
-  <ul class="navbar-nav" role="list">
-    <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
-    <li><a href="{{ request()->routeIs('home') ? '#profil' : route('home') . '#profil' }}">Profil</a></li>
-    <li><a href="{{ request()->routeIs('home') ? '#kurikulum' : route('home') . '#kurikulum' }}">Kurikulum</a></li>
-    <li><a href="{{ request()->routeIs('home') ? '#eservice' : route('home') . '#eservice' }}">E-Service</a></li>
-    <li><a href="{{ request()->routeIs('home') ? '#galeri' : route('home') . '#galeri' }}">Galeri</a></li>
-    <li><a href="{{ request()->routeIs('home') ? '#keunggulan' : route('home') . '#keunggulan' }}">Keunggulan</a></li>
-    <li><a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.*') ? 'active' : '' }}">Blog</a></li>
-    <li><a href="{{ route('download.index') }}" class="{{ request()->routeIs('download.*') ? 'active' : '' }}">Download</a></li>
-    <li><a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}">Kontak</a></li>
-    <li><a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}" class="nav-cta-btn">Daftar Sekarang</a></li>
-  </ul>
-  <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="navbar-inner">
+    <a href="{{ route('home') }}" class="navbar-brand" aria-label="{{ $site_name ?? 'Home' }}">
+      <div class="navbar-logo" @if(isset($site_logo) && !empty($site_logo)) style="background: transparent; border-radius: 0; width: auto; height: 42px;" @endif>
+        @if(isset($site_logo) && !empty($site_logo))
+          <img src="{{ asset($site_logo) }}" alt="Logo" style="max-height:100%; max-width:100%; object-fit:contain;">
+        @else
+          TJ
+        @endif
+      </div>
+      <div class="navbar-title">
+        <span>{{ $site_name ?? 'TJKT SMK Fadris' }}</span>
+        <span>Teknik Jaringan &amp; Komputer</span>
+      </div>
+    </a>
+    <ul class="navbar-nav" role="list">
+      <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
+      <li><a href="{{ request()->routeIs('home') ? '#profil' : route('home') . '#profil' }}">Profil</a></li>
+      <li><a href="{{ request()->routeIs('home') ? '#kurikulum' : route('home') . '#kurikulum' }}">Kurikulum</a></li>
+      <li><a href="{{ request()->routeIs('home') ? '#eservice' : route('home') . '#eservice' }}">E-Service</a></li>
+      <li><a href="{{ request()->routeIs('home') ? '#galeri' : route('home') . '#galeri' }}">Galeri</a></li>
+      <li><a href="{{ request()->routeIs('home') ? '#keunggulan' : route('home') . '#keunggulan' }}">Keunggulan</a></li>
+      <li><a href="{{ route('blog.index') }}" class="{{ request()->routeIs('blog.*') ? 'active' : '' }}">Blog</a></li>
+      <li><a href="{{ route('download.index') }}" class="{{ request()->routeIs('download.*') ? 'active' : '' }}">Download</a></li>
+      <li><a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}">Kontak</a></li>
+      <li><a href="{{ request()->routeIs('home') ? '#kontak' : route('home') . '#kontak' }}" class="nav-cta-btn">Daftar Sekarang</a></li>
+    </ul>
+    <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- Mobile Menu -->
@@ -87,6 +89,7 @@
 </div>
 
 @yield('content')
+
 
 <!-- ===== FOOTER ===== -->
 <footer role="contentinfo">

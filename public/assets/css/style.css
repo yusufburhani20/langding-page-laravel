@@ -70,6 +70,25 @@ body {
   border-radius: 3px;
 }
 
+/* ===== BOXED / CONTAINER LAYOUT ===== */
+.site-container,
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .site-container,
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 /* ===== NAVBAR ===== */
 .navbar {
   position: fixed;
@@ -77,13 +96,29 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 0 2rem;
   height: 72px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background: transparent;
   transition: var(--transition);
+}
+
+/* Inner wrapper that constrains navbar content */
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar-inner {
+    padding: 0 1rem;
+  }
 }
 
 .navbar.scrolled {
@@ -242,7 +277,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 100px 5% 40px;
+  padding: 100px 0 40px;
   overflow: hidden;
 }
 
@@ -323,10 +358,17 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
+  padding: 0 1.5rem;
   position: relative;
   z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hero-inner {
+    padding: 0 1rem;
+  }
 }
 
 .hero-content {
@@ -678,7 +720,7 @@ body {
 
 /* SECTION BASE */
 section {
-  padding: 96px 5%;
+  padding: 96px 0;
 }
 
 .section-eyebrow {
@@ -1494,7 +1536,7 @@ section {
 /* FOOTER */
 footer {
   background: #060D1A;
-  padding: 72px 5% 0;
+  padding: 72px 0 0;
   border-top: 2px solid rgba(14,165,233,0.30);
   position: relative;
   overflow: hidden;
@@ -1805,7 +1847,7 @@ footer::after {
   }
 
   section {
-    padding: 48px 5%;
+    padding: 48px 0;
   }
 
   .subjects-grid {
